@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Platformer Tileset\Materials\GradientSky\Scripts\GradientSkyObject.cs" />
+    <Compile Include="Assets\Scripts\RandomRoom\RandomRoomGeneration_Ben.cs" />
     <Compile Include="Assets\Platformer Tileset\Materials\GradientSky\Scripts\Common\GradientSkyCommon.cs" />
     <Compile Include="Assets\Platformer Tileset\Materials\GradientSky\Scripts\GradientSkyCamera.cs" />
     <Compile Include="Assets\Scripts\BSP\BSP.cs" />
