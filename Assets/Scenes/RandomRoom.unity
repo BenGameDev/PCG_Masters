@@ -399,6 +399,7 @@ GameObject:
   - component: {fileID: 1213880419}
   - component: {fileID: 1213880418}
   - component: {fileID: 1213880420}
+  - component: {fileID: 1213880421}
   m_Layer: 0
   m_Name: GameManager2
   m_TagString: Untagged
@@ -418,13 +419,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77298015c3e8ae143a2cfab847a3e81b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapWidth: 100
-  mapHeight: 100
+  mapWidth: 400
+  mapHeight: 400
   roomCount: 15
-  minRoomWidth: 5
-  maxRoomWidth: 10
-  minRoomHeight: 5
-  maxRoomHeight: 10
+  minRoomWidth: 20
+  maxRoomWidth: 40
+  minRoomHeight: 20
+  maxRoomHeight: 40
+  useObstacles: 1
+  obstaclePrefab: {fileID: 5960151060007147616, guid: 945aeb43b9d57d945bc0855e49ea0658, type: 3}
+  obstacleDensity: 0.1
   floorTilePrefab: {fileID: 8703617216022546622, guid: b44f74b24928d9f43a4374d3455bfbe3, type: 3}
   wallTilePrefab: {fileID: 1153333703894909707, guid: 7b17dcc7bd1a2d443acb9acf5b191ba6, type: 3}
   roomTypeConfigs:
@@ -468,7 +472,21 @@ MonoBehaviour:
   shopColor: {r: 0, g: 1, b: 1, a: 1}
   healColor: {r: 1, g: 0, b: 1, a: 1}
   normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  linePrefab: {fileID: 2606865378814850243, guid: 71c74c3199d9aa946b0b7c1b9e19c47e, type: 3}
   roomGenerator: {fileID: 1213880418}
+--- !u!114 &1213880421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213880417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1851543f41a156e46901fa84d80f1235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimap: {fileID: 1552579806}
 --- !u!1 &1461808672
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -605,8 +623,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 108.22937, y: 52.68643}
-  m_SizeDelta: {x: -230.4238, y: -105.3729}
+  m_AnchoredPosition: {x: 3.9805, y: -1.3267975}
+  m_SizeDelta: {x: -140.6453, y: -103.4937}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1552579808
 MonoBehaviour:

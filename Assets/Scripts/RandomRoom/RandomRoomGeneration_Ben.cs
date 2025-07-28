@@ -32,6 +32,13 @@ public class RandomRoomGeneration_Ben : MonoBehaviour
     public int minRoomHeight = 5;
     public int maxRoomHeight = 10;
 
+    [Header("Obstacle Settings")]
+    public bool useObstacles = true;
+    public GameObject obstaclePrefab;
+    [Range(0f, 1f)]
+    public float obstacleDensity = 0.1f; // 10% of room tiles will have obstacles
+
+
     [Header("Tile Prefabs")]
     public GameObject floorTilePrefab;
     public GameObject wallTilePrefab;
@@ -45,6 +52,7 @@ public class RandomRoomGeneration_Ben : MonoBehaviour
         public bool top, bottom, left, right;
         public Vector2Int gridPos;
         public RoomType type = RoomType.Normal;
+        public List<RoomData> connectedRooms = new List<RoomData>();
 
         public RoomData(RectInt rect, Vector2Int gridPos)
         {
@@ -233,6 +241,8 @@ public class RandomRoomGeneration_Ben : MonoBehaviour
                 }
             }
         }
+
+        PlaceObstaclesInRoom(room, roomParent.transform);
     }
 
     void ConnectRooms()
@@ -253,6 +263,12 @@ public class RandomRoomGeneration_Ben : MonoBehaviour
                     int roomIndexA = rooms.IndexOf(room) + 1;
                     int roomIndexB = rooms.IndexOf(neighbor) + 1;
                     CreateCorridor(room, neighbor, side, roomIndexA, roomIndexB);
+
+                    // Register connection between rooms (only if not already connected)
+                    if (!room.connectedRooms.Contains(neighbor))
+                        room.connectedRooms.Add(neighbor);
+                    if (!neighbor.connectedRooms.Contains(room))
+                        neighbor.connectedRooms.Add(room);
                 }
             }
         }
@@ -307,6 +323,36 @@ public class RandomRoomGeneration_Ben : MonoBehaviour
                 Vector2Int pos = new Vector2Int(x, start.y);
                 if (floorPositions.Add(pos) && floorTilePrefab != null)
                     Instantiate(floorTilePrefab, new Vector3(pos.x, pos.y, 0), Quaternion.identity, corridorParent.transform);
+            }
+        }
+    }
+
+    void PlaceObstaclesInRoom(RectInt room, Transform parent)
+    {
+        if (!useObstacles || obstaclePrefab == null) return;
+
+        int area = room.width * room.height;
+        int obstacleCount = Mathf.RoundToInt(area * obstacleDensity);
+        
+
+        HashSet<Vector2Int> usedPositions = new HashSet<Vector2Int>();
+
+        for (int i = 0; i < obstacleCount; i++)
+        {
+            Vector2Int pos;
+            int attempts = 0;
+            do
+            {
+                int x = Random.Range(room.xMin + 1, room.xMax - 1); // avoid edge tiles
+                int y = Random.Range(room.yMin + 1, room.yMax - 1);
+                pos = new Vector2Int(x, y);
+                attempts++;
+            } while (usedPositions.Contains(pos) && attempts < 10);
+
+            if (!usedPositions.Contains(pos))
+            {
+                usedPositions.Add(pos);
+                Instantiate(obstaclePrefab, new Vector3(pos.x, pos.y, 0), Quaternion.identity, parent);
             }
         }
     }

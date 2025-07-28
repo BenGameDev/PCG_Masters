@@ -66,6 +66,7 @@
     <Compile Include="Assets\Platformer Tileset\Materials\GradientSky\Scripts\Common\GradientSkyCommon.cs" />
     <Compile Include="Assets\Platformer Tileset\Materials\GradientSky\Scripts\GradientSkyCamera.cs" />
     <Compile Include="Assets\Scripts\BSP\BSP.cs" />
+    <Compile Include="Assets\Scripts\RandomRoom\ActivateMinimap.cs" />
     <Compile Include="Assets\Scripts\RandomRoom\RandomGenerationWithConstraints.cs" />
     <Compile Include="Assets\Scripts\CA\CellularAutomata.cs" />
     <Compile Include="Assets\Scripts\RandomRoom\RoomMinimap.cs" />

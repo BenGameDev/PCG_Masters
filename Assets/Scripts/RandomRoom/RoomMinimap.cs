@@ -17,6 +17,10 @@ public class RoomMinimap : MonoBehaviour
     public Color healColor = Color.magenta;
     public Color normalColor = Color.gray;
 
+    [Header("Image For Connections")]
+    public GameObject linePrefab;
+    private List<GameObject> lines = new List<GameObject>();
+
     // Reference your room generation script here (or set via inspector)
     public RandomRoomGeneration_Ben roomGenerator;
 
@@ -34,6 +38,12 @@ public class RoomMinimap : MonoBehaviour
 
     public void GenerateMinimap()
     {
+
+        // Clear previous lines
+        foreach (var line in lines)
+            Destroy(line);
+        lines.Clear();
+
         // Clear previous icons
         foreach (var icon in icons)
             Destroy(icon);
@@ -111,6 +121,45 @@ public class RoomMinimap : MonoBehaviour
             Text label = icon.GetComponentInChildren<Text>();
             if (label != null)
                 label.text = GetLabelForRoomType(room.type);
+        }
+
+        // Create a lookup to find icon positions by grid position
+        Dictionary<Vector2Int, RectTransform> iconMap = new Dictionary<Vector2Int, RectTransform>();
+        for (int i = 0; i < roomGenerator.rooms.Count; i++)
+        {
+            var room = roomGenerator.rooms[i];
+            iconMap[room.gridPos] = icons[i].GetComponent<RectTransform>();
+        }
+
+        // Draw lines between connected rooms
+        foreach (var room in roomGenerator.rooms)
+        {
+            RectTransform from = iconMap[room.gridPos];
+
+            foreach (var connectedRoom in room.connectedRooms)
+            {
+                // Avoid drawing the same line twice
+                if (room.gridPos.x > connectedRoom.gridPos.x || room.gridPos.y > connectedRoom.gridPos.y)
+                    continue;
+
+                if (!iconMap.TryGetValue(connectedRoom.gridPos, out RectTransform to))
+                    continue;
+
+                Vector2 fromPos = from.anchoredPosition;
+                Vector2 toPos = to.anchoredPosition;
+                Vector2 dir = (toPos - fromPos).normalized;
+                float distance = Vector2.Distance(fromPos, toPos);
+
+                GameObject line = Instantiate(linePrefab, minimapContainer);
+                lines.Add(line);
+
+                RectTransform lineRT = line.GetComponent<RectTransform>();
+                lineRT.sizeDelta = new Vector2(distance, 3f); // 3f = line thickness
+                lineRT.anchoredPosition = (fromPos + toPos) / 2f;
+
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                lineRT.rotation = Quaternion.Euler(0, 0, angle);
+            }
         }
     }
 
