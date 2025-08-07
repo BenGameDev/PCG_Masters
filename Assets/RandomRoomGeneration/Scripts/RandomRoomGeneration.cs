@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Add to list to create more room types
 public enum RoomType
 {
     Start,
@@ -19,7 +20,7 @@ public class RoomTypeConfig
     public int minimumCount = 1;
 }
 
-public class RandomRoomGeneration_Ben : MonoBehaviour
+public class RandomRoomGeneration : MonoBehaviour
 {
     [Header("Map Settings")]
     public int mapWidth = 100;
@@ -224,6 +225,8 @@ public class RandomRoomGeneration_Ben : MonoBehaviour
             r.type = RoomType.Normal;
     }
 
+
+    // Function to instantiate objects for room
     void DrawRoom(RectInt room, int roomIndex, RoomType type)
     {
         GameObject roomParent = new GameObject($"Room{roomIndex}_{type}");
@@ -245,6 +248,8 @@ public class RandomRoomGeneration_Ben : MonoBehaviour
         PlaceObstaclesInRoom(room, roomParent.transform);
     }
 
+
+    // Corridor Generation
     void ConnectRooms()
     {
         foreach (var room in rooms)

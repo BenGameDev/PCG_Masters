@@ -61,21 +61,21 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.47f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Platformer Tileset\Materials\GradientSky\Scripts\GradientSkyObject.cs" />
-    <Compile Include="Assets\Scripts\RandomRoom\RandomRoomGeneration_Ben.cs" />
-    <Compile Include="Assets\Platformer Tileset\Materials\GradientSky\Scripts\Common\GradientSkyCommon.cs" />
-    <Compile Include="Assets\Platformer Tileset\Materials\GradientSky\Scripts\GradientSkyCamera.cs" />
+    <Compile Include="Assets\RandomRoomGeneration\Scripts\RandomRoomGeneration.cs" />
+    <Compile Include="Assets\RandomRoomGeneration\Platformer Tileset\Materials\GradientSky\Scripts\GradientSkyCamera.cs" />
     <Compile Include="Assets\Scripts\BSP\BSP.cs" />
-    <Compile Include="Assets\Scripts\RandomRoom\ActivateMinimap.cs" />
-    <Compile Include="Assets\Scripts\RandomRoom\RandomGenerationWithConstraints.cs" />
+    <Compile Include="Assets\RandomRoomGeneration\Platformer Tileset\Materials\GradientSky\Scripts\Common\GradientSkyCommon.cs" />
+    <Compile Include="Assets\RandomRoomGeneration\Scripts\RoomMinimap.cs" />
     <Compile Include="Assets\Scripts\CA\CellularAutomata.cs" />
-    <Compile Include="Assets\Scripts\RandomRoom\RoomMinimap.cs" />
+    <Compile Include="Assets\RandomRoomGeneration\Scripts\ActivateMinimap.cs" />
+    <Compile Include="Assets\RandomRoomGeneration\Platformer Tileset\Materials\GradientSky\Scripts\GradientSkyObject.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Platformer Tileset\Materials\UnlitVertexColour_Alpha.shader" />
-    <None Include="Assets\Platformer Tileset\Materials\GradientSky\Shaders\VertexColorCamera.shader" />
-    <None Include="Assets\Platformer Tileset\readme.txt" />
-    <None Include="Assets\Platformer Tileset\Materials\GradientSky\Shaders\VertexColorObject.shader" />
+    <None Include="Assets\RandomRoomGeneration\README.txt" />
+    <None Include="Assets\RandomRoomGeneration\Platformer Tileset\Materials\UnlitVertexColour_Alpha.shader" />
+    <None Include="Assets\RandomRoomGeneration\Platformer Tileset\Materials\GradientSky\Shaders\VertexColorCamera.shader" />
+    <None Include="Assets\RandomRoomGeneration\Platformer Tileset\readme.txt" />
+    <None Include="Assets\RandomRoomGeneration\Platformer Tileset\Materials\GradientSky\Shaders\VertexColorObject.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -22,7 +22,7 @@ public class RoomMinimap : MonoBehaviour
     private List<GameObject> lines = new List<GameObject>();
 
     // Reference your room generation script here (or set via inspector)
-    public RandomRoomGeneration_Ben roomGenerator;
+    public RandomRoomGeneration roomGenerator;
 
     private List<GameObject> icons = new List<GameObject>();
 
