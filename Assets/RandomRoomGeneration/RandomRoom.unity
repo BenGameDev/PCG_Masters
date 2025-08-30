@@ -344,9 +344,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1213880419}
-  - component: {fileID: 1213880418}
-  - component: {fileID: 1213880420}
   - component: {fileID: 1213880421}
+  - component: {fileID: 1213880423}
+  - component: {fileID: 1213880422}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -354,41 +354,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1213880418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1213880417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77298015c3e8ae143a2cfab847a3e81b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapWidth: 400
-  mapHeight: 400
-  roomCount: 15
-  minRoomWidth: 20
-  maxRoomWidth: 40
-  minRoomHeight: 20
-  maxRoomHeight: 40
-  useObstacles: 1
-  obstaclePrefab: {fileID: 5960151060007147616, guid: 945aeb43b9d57d945bc0855e49ea0658, type: 3}
-  obstacleDensity: 0.005
-  floorTilePrefab: {fileID: 8703617216022546622, guid: b44f74b24928d9f43a4374d3455bfbe3, type: 3}
-  wallTilePrefab: {fileID: 1153333703894909707, guid: 7b17dcc7bd1a2d443acb9acf5b191ba6, type: 3}
-  roomTypeConfigs:
-  - type: 3
-    label: Room_Shop
-    minimumCount: 1
-  - type: 4
-    label: Room_Heal
-    minimumCount: 1
-  - type: 2
-    label: Room_Exit
-    minimumCount: 1
-  minimap: {fileID: 1213880420}
 --- !u!4 &1213880419
 Transform:
   m_ObjectHideFlags: 0
@@ -404,29 +369,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1213880420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1213880417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aad6c0787f0ea2c4aa7eb212e050e512, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minimapContainer: {fileID: 1552579807}
-  roomIconPrefab: {fileID: 681549181195037826, guid: 1ac6889eb82a2fc44958093beb7b4ce2, type: 3}
-  roomIconSize: 20
-  startColor: {r: 0, g: 1, b: 0, a: 1}
-  bossColor: {r: 1, g: 0, b: 0, a: 1}
-  exitColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  shopColor: {r: 0, g: 1, b: 1, a: 1}
-  healColor: {r: 1, g: 0, b: 1, a: 1}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  linePrefab: {fileID: 2606865378814850243, guid: 71c74c3199d9aa946b0b7c1b9e19c47e, type: 3}
-  roomGenerator: {fileID: 1213880418}
 --- !u!114 &1213880421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,6 +382,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minimap: {fileID: 1552579806}
+--- !u!114 &1213880422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213880417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde788412fd5ad9439ee9e6a9500601e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimapContainer: {fileID: 1552579807}
+  roomIconPrefab: {fileID: 681549181195037826, guid: 7542940b2ece1204f9919ccc42eb7531, type: 3}
+  roomIconSize: 20
+  startColor: {r: 0, g: 1, b: 0, a: 1}
+  bossColor: {r: 1, g: 0, b: 0, a: 1}
+  exitColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  shopColor: {r: 0, g: 1, b: 1, a: 1}
+  healColor: {r: 1, g: 0, b: 1, a: 1}
+  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  linePrefab: {fileID: 2606865378814850243, guid: 71c74c3199d9aa946b0b7c1b9e19c47e, type: 3}
+  roomGenerator: {fileID: 1213880423}
+--- !u!114 &1213880423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213880417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf1833ce5485d5a4e87e300402b45e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapWidth: 100
+  mapHeight: 100
+  roomCount: 10
+  minRoomWidth: 5
+  maxRoomWidth: 10
+  minRoomHeight: 5
+  maxRoomHeight: 10
+  useObstacles: 1
+  obstaclePrefab: {fileID: 5960151060007147616, guid: 945aeb43b9d57d945bc0855e49ea0658, type: 3}
+  obstacleDensity: 0.1
+  floorTilePrefab: {fileID: 8703617216022546622, guid: 6946098832ed34a499c8f7149312be2b, type: 3}
+  wallTilePrefab: {fileID: 1153333703894909707, guid: bcdca37340f760a49ab06b3c1c021d65, type: 3}
+  roomTypeConfigs: []
+  minimap: {fileID: 1213880422}
 --- !u!1 &1461808672
 GameObject:
   m_ObjectHideFlags: 0
